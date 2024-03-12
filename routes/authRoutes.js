@@ -4,7 +4,9 @@ const {
   loginController,
   currentUserController,
 } = require("../controllers/authController");
+
 // const requireSignIn= require("../middleware/authMiddleware");
+
 const authMiddelware = require("../middleware/authMiddleware");
 
 const router = express.Router();

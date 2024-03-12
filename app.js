@@ -26,6 +26,8 @@ app.get('/',(req,res)=>{
 
 app.use('/api/v1/admin',require('./routes/adminRoutes'))
 app.use("/api/v1/auth", require("./routes/authRoutes"));
+app.use("/api/v1/sidebar", require("./routes/sidebarRoutes"));
+
 
 
 app.listen(process.env.PORT||8080,console.log(`server is running on port ${process.env.PORT}`))
