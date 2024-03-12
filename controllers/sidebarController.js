@@ -25,8 +25,8 @@ const allSidebarItem= async (req, res) => {
         subtopics,
       });
       console.log(formData)
-      // await formData.save();
-      // res.status(201).send({success:"true", message: "Sidebar data saved successfully"});
+      await formData.save();
+      res.status(201).send({success:"true", message: "Sidebar data saved successfully"});
     } 
     catch (error) {
       console.error("Error saving form data:", error);
