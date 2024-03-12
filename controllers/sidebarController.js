@@ -1,12 +1,14 @@
 const express = require('express');
-const SidebarItem = require('../models/admin/sidebarItemModel');
+const sidebarItemModel = require("../models/admin/sidebarItemModel");
+
+// const SidebarItem = require('../models/admin/sidebarItemModel');
 
 const router = express.Router();
 
 // Get All Sidebar Items
 const allSidebarItem= async (req, res) => {
     try {
-      const sidebarItems = await SidebarItem.find();
+      const sidebarItems = await sidebarItemModel.find();
       res.send(sidebarItems);
     } catch (err) {
       res.status(500).json({ message: err.message });
@@ -18,7 +20,7 @@ const allSidebarItem= async (req, res) => {
   const createSidebarItem= async (req, res) => {
     try {
       const { heading, subtopics } = req.body;
-      const formData = new SidebarItem({
+      const formData = new sidebarItemModel({
         heading,
         subtopics,
       });
@@ -33,7 +35,7 @@ const allSidebarItem= async (req, res) => {
   // Update Sidebar Item
   const updateSlidebarItem=async (req, res) => {
     try {
-      const updatedSidebarItem = await SidebarItem.findByIdAndUpdate(
+      const updatedSidebarItem = await sidebarItemModel.findByIdAndUpdate(
         req.params.id,
         req.body,
         { new: true }
@@ -50,7 +52,7 @@ const allSidebarItem= async (req, res) => {
   // Delete Sidebar Item
   const deleteSidebarItem=async (req, res) => {
     try {
-      await SidebarItem.findByIdAndDelete(req.params.id);
+      await sidebarItemModel.findByIdAndDelete(req.params.id);
       res.json({ message: 'Sidebar item deleted successfully' });
     } catch (err) {
       res.status(404).json({ message: 'Sidebar item not found' });
