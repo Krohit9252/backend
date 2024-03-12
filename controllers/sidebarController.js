@@ -24,9 +24,11 @@ const allSidebarItem= async (req, res) => {
         heading,
         subtopics,
       });
-      await formData.save();
-      res.status(201).send({success:"true", message: "Sidebar data saved successfully"});
-    } catch (error) {
+      console.log(formData)
+      // await formData.save();
+      // res.status(201).send({success:"true", message: "Sidebar data saved successfully"});
+    } 
+    catch (error) {
       console.error("Error saving form data:", error);
       res.status(500).json({ error: "Internal server error" });
     }
